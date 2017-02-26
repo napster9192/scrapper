@@ -1,0 +1,29 @@
+{% block css %}
+	<link rel='stylesheet' href='/css/scrap.css' />
+{% endblock %}
+
+{% block js %}
+  <script type="text/javascript" src="/js/scrap.js"></script>
+{% endblock %}
+
+{% block body %}
+	<form id="scrap-form" action="{{ action }}" method="POST">
+		{% if update and item  %}
+		<input type="hidden" name="id" value="{{ item._id }}" />
+		{% endif %}
+
+		<input type="text" name="name" value="{{ item ? item.name : '' }}" placeholder="Nom" />
+		<input type="text" name="uri" value="{{ item ? item.uri : '' }}" placeholder="Uri" />
+
+		<button class="load" type="button">Charger</button>
+		
+		<iframe {% if update and item %}src="/scrap/request?uri={{ item.uri|encodeURIComponent }}"{% endif %} sandbox="allow-scripts allow-pointer-lock allow-same-origin"></iframe>
+
+		<input type="submit" value="Envoyer" />
+		
+		{% if update and item %}
+		<a href="/scrap/delete/{{ item._id }}">Supprimer</a>
+		{% endif %}
+		<a href="/scrap">Annuler</a>
+	</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <div>
+  	<a href="/scrap/create">Ajouter un scrap</a>
+  </div>
+
+  <ul>
+	{% for scrap in items %}
+        <li>
+        	<a href="/scrap/show/{{ scrap._id }}">{{ scrap.name }}</a>
+          <a href="/scrap/update/{{ scrap._id }}">Modifier</a>
+          <a href="/scrap/delete/{{ scrap._id }}">Supprimer</a>
+    	</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

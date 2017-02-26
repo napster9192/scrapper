@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <div>
+    <a href="/scrap">Retourner à la liste</a>
+  </div>
+  <div>
+    <a href="/scrap/update/{{ item._id }}">Modifier</a>
+    <a href="/scrap/delete/{{ item._id }}">Supprimer</a>
+  </div>
+
+  <div>
+    {{ item.uri }}
+  </div>
+  <div>
+    {{ item.last_execution }}
+  </div>
+  <div>
+    {{ item.status }}
+  </div>
+{% endblock %}
